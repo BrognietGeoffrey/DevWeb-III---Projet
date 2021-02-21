@@ -6,7 +6,6 @@ app = Flask(__name__)
 def init():
     return "Bienvenue sur le site de prise de note!"
 
-
 # Page de connexion
 @app.route('/connexion')
 def connexion():
@@ -17,12 +16,10 @@ def connexion():
 def acceuil():
     return "Page d'acceuil"
 
-"""
 # Page d'une note
 @app.route('/notes/<note>')
 def page_note(note):
-    return f"Page de note: {note}"
-"""
+    return "Page de note: %s" % note
 
 
 if __name__ == "__main__":
