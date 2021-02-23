@@ -1,5 +1,6 @@
-from flask import Flask, render_template, jsonify
 from urllib import request
+
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -30,13 +31,13 @@ def signup():
 # Page d'une note
 @app.route('/notes/<note>')
 def page_note(note):
-	return " de note: {}".format(note)
+	return " de note: %s" % note
 
 
 # Partage d'une note
 @app.route('/notes/<note>/share/<person>')
 def share_notes(note, person):
-	return "Votre note {} à bien été partagée avec {}".format(note, person)
+	return "Votre note %s à bien été partagée avec %s" % (note, person)
 
 
 # Utilisation de SWAPI
