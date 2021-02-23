@@ -11,11 +11,6 @@ def init():
 def connexion():
     return render_template("connexion.html")
 
-# Page d'acceuil
-@app.route('/acceuil')
-def acceuil():
-    return "Page d'acceuil"
-
 # Page d'une note
 @app.route('/notes/<note>')
 def page_note(note):
