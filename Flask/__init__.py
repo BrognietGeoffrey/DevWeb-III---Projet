@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def init():
-    return "Bienvenue sur le site de prise de note!"
+    return render_template("init.html")
 
 # Page de connexion
 @app.route('/connexion')
