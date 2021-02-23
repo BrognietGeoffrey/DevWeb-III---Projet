@@ -2,14 +2,19 @@ from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
 
+# Page d'acceuil
 @app.route('/')
 def init():
     return render_template("init.html")
 
 # Page de connexion
-@app.route('/connexion')
+@app.route('/connexion', methods=['GET', 'POST'])
 def connexion():
-    return render_template("connexion.html")
+    if request.method == 'POST':
+        username = request.form.get("username", None)
+        return render_template('connexion.html', username=username)
+    else:
+        return render_template('connexion.html')
 
 # Page d'acceuil
 @app.route('/acceuil')
