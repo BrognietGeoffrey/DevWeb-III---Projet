@@ -1,20 +1,25 @@
-body {
-	background-color: rgb(88, 88, 88);
-	color: lightgrey;
+
+body{
+    background-color: #2C2F33;
+    color: #99aab5;
 }
 
 h1 {
-	text-align: center;
+    text-align: center;
 }
 
 label {
-	display: block;
-	font: .9rem 'Fira Sans', sans-serif;
+    display: block;
+    font: .9rem 'Fira Sans', sans-serif;
 }
 
 input[type='submit'],
 label {
-	margin-top: 1rem;
+    margin-top: 1rem;
 }
 
+input[type="text"], input[type="password"], input[type="submit"] {
+    color: #99aab5;
+    background: #2C2F33;
 
+}
