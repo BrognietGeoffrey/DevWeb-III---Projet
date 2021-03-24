@@ -2,10 +2,12 @@ from flask import Flask, render_template, jsonify, request
 
 app = Flask(__name__)
 
+
 # Page d'acceuil
 @app.route('/')
 def init():
     return render_template("init.html")
+
 
 # Page de connexion
 @app.route('/connexion', methods=['GET', 'POST'])
@@ -16,11 +18,18 @@ def connexion():
     else:
         return render_template('connexion.html')
 
+
 # Page d'une note
 @app.route('/notes/<note>')
-def page_note(note):
-    return "Page de note: %s" % note
+def page_page(note):
+    return f"Page de note: {note}"
+
+
+# Page de partage d'une note
+@app.route('/notes/<note>/share/<person>')
+def share_note(note, person):
+    return f"Votre note {note} à bien été partagée avec {person}"
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
