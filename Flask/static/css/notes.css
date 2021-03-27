@@ -7,10 +7,7 @@ h1 {
     text-align: center;
 }
 
-button{
-    height: 60px;
-    width: 120px;
-    background-color: #444444;
-    color: #99aab5;
+label {
+    display: block;
     font: .9rem 'Fira Sans', sans-serif;
 }
