@@ -22,6 +22,7 @@ def connexion():
 def notes():
     return render_template("notes.html")
 
+
 # Page d'une note
 @app.route('/notes/<note>')
 def page_page(note):
