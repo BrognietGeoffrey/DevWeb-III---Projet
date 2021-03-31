@@ -18,6 +18,10 @@ def connexion():
     else:
         return render_template('connexion.html')
 
+@app.route('/notes')
+def notes():
+    return render_template("notes.html")
+
 
 # Page d'une note
 @app.route('/notes/<note>')
