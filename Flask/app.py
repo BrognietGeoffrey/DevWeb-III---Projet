@@ -1,8 +1,16 @@
 from flask import Flask, render_template, jsonify, request
+import psycopg2
 
 app = Flask(__name__)
 
+database = psycopg2.connect(
+    host="localhost",
+    database="postgres",
+    user="postgres",
+    password="postgres"
+)
 
+cur = database.cursor()
 # Page d'acceuil
 @app.route('/')
 def init():
