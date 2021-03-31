@@ -7,7 +7,7 @@ Membres du projet
 
 >Meyers Humbert
 
->Everad Matthew
+>Everard Matthew
 
 >Tang Jean-Michael
 
