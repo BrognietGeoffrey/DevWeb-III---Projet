@@ -1,71 +1,61 @@
-import React from "react";
+import React, { Component }from "react";
 import './App.css';
-import { Login, Register } from "./component/loginRegister/index";
+import Header from "./components/Header";
+import Routes from "./Routes.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogginActive : true
+      logged_in : false,
+      user_id: 0,
+      user_firstname:  "",
+      user_lastname: "",
+      user_email: "",
+      show_popUp: null,
     };
   }
 
-  componentDidMount() {
-    this.rightSide.classList.add("right")
-  }
+  popUp() {
+    let Dial = this.state.show_popUp;
+    if(Dial === null)
+      return null;
 
-  changeState() {
-    const { isLogginActive } = this.state;
-
-    if (isLogginActive) {
-      this.rightSide.classList.remove("right");
-      this.rightSide.classList.add("left");
-    }
-    else {
-      this.rightSide.classList.remove("left");
-      this.rightSide.classList.add("right");
-    }
-    this.state(prevState => ({ isLogginActive: !prevState.isLogginActive }));
-  }
+    return (
+        <Dial
+          handle_deconnexion={this.handle_deconnexion}
+          handle_connexion={this.on_login}
+          closeMe={() => this.setState({show_popUp:null})}
+          user_id={this.state.user_id}
+        />);
+  };
 
   render() {
-    const { isLogginActive } = this.state;
-    const current = isLogginActive ? "register" : "login";
-    const currentActive = isLogginActive ? "login" : "register";
     return (
       <div className="App">
-        <div className="login">
-          <div className="container" ref={ref => (this.container = ref)}>
-            {isLogginActive && (
-            <Login containerRef={ref => (this.current = ref)} />
-            )}
-            {!isLogginActive && (
-              <Register containerRef = {ref => (this.current = ref)} />
-            )}
+        <div className="bg">
+          <Header 
+              afficheNom={this.state.user_firstname + ' ' + this.state.user_lastname}
+              display_popUp={(type) => this.setState({ show_popUp: type })}
+              logged_in={this.state.logged_in}
+          />
+          <div className="Body" style={{textAlign: "center"}}>
+            <Routes
+                user_id={this.state.user_id}
+                user_firstname={this.state.user_firstname}
+                user_email={this.state.user_email}
+                user_lastname={this.state.user_lastname}
+                display_popUp={(type) => this.setState({ show_popUp: type })}
+            />
+            <div id="bodyContent">
+              {this.popUp()} {/*every popup will be displayed here*/}
+            </div>
           </div>
-          <RightSide
-            current={current}
-            currentActive = {currentActive}
-            containerRef={ref => (this.rightSide = ref)}
-            onclick={this.changeState.bind(this)} />
         </div>
       </div>
     );
   }
-}
-
-const RightSide = props => {
-  return (
-    <div
-    className="right-side"
-    ref={props.containerRef}
-    onclick={props.onclick}
-    >
-      <div className="inter-container">
-        <div className="text">{props.current}</div>
-      </div>
-      </div>
-  );
 }
 
 export default App;
