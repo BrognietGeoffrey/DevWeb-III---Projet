@@ -49,7 +49,7 @@ function Header (props){
                         height="30"
                         className="d-inline-block align-top"
                     />{' '}
-                    InvoiceBook
+                    Easy notes
                 </Navbar.Brand>
                 <Navbar.Text>
                     Connecté en tant que : <span id="AfficheUserName" >{props.afficheNom}</span>
