@@ -2,6 +2,10 @@ import React from 'react';
 import { Container, Form, Button} from 'react-bootstrap';
 import "./Notes.css";
 
+function save(){
+    return null;
+}
+
 function Notes(){
     return (
         <Container className="Notes">
@@ -12,10 +16,6 @@ function Notes(){
             <Button variant="outline-primary" onClick={() => save()}>Save</Button>{' '}
         </Container>
     );
-}
-
-function save(){
-    return null;
 }
 
 export default Notes;
