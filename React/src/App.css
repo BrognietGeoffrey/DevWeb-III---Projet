@@ -1,40 +1,26 @@
+:root{
+  /*COULEURS DISCORD*/
+
+  --Bleu-violet: #7289DA;
+  --Blanc-immaculé: #FFFFFF;
+  --Gris-violet: #99AAB5;
+  --Sombre-mais-pas-noir: #2C2F33;
+  --Pas-noir-mais-presque: #23272A;
+  --Vraiment-noir: #000000;
+}
+
+
 .App {
-  text-align: center;
-  background-color: #2C2F33;
-  color: grey;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  font-family: "Abel", sans-serif;
+  font-size: calc(10px + 1vmin);
+  color: var(--Blanc-immaculé);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow-x: hidden;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bg {
+  /*Bg generated with: https://cssgradient.io */
+  background: var(--Sombre-mais-pas-noir);
+  min-height: 100vh;
 }

@@ -2,10 +2,20 @@ import React from 'react';
 import { Container, Form, Button, Card} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 
+function afficheCards() {
+    //Recup données
+
+    return(
+        //mise en forme
+        "test"
+    );
+}
+
 function PagePrincipale(){
 
     return (
         <Container className="PagePrincipale">
+            {afficheCards()}
 
             {/*<div>
                 ['Note1', 'Note2'].map((note, idx) => (

@@ -8,7 +8,7 @@ import Connexion from "./Connexion";
 function Header (props){
     const loggedOut = (
         <>
-            <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar bg={"#99AAB5"} expand="lg">
                 <Navbar.Brand href="/">
                     <img
                         alt="Logo du site"
@@ -40,7 +40,7 @@ function Header (props){
 
     const loggedIn = (
         <>
-            <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar bg={"dark"} variant={"dark"} expand="lg">
                 <Navbar.Brand href="/">
                     <img
                         alt=""
