@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Button, Card} from 'react-bootstrap';
+import { Container, Card} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 
 function afficheCards() {
@@ -7,57 +7,28 @@ function afficheCards() {
 
     return(
         //mise en forme
-        "test"
+        ["test 1", "test 2", "test 3"]
     );
 }
 
 function PagePrincipale(){
 
-    return (
-        <Container className="PagePrincipale">
-            {afficheCards()}
-
-            {/*<div>
-                ['Note1', 'Note2'].map((note, idx) => (
-                <Card key={idx} variant={note} style={{width: '18rem'}}>
-                    <Card.Img variant="top"/>
-                    <Card.Body>
-                        <Card.Title>{temp[idx]}</Card.Title>
-                        <Card.Text>
-                            Lorem ipsum blablabla test de la note 1.
-                        </Card.Text>
-                        <Button variant="primary">Éditer</Button>
-                    </Card.Body>
-                </Card>
-            </div>
-            ));*/}
+    let listeNotes = [];
+    let i;
+    for (i=1; i < afficheCards().length+1; i++){
+        listeNotes[i] = (
             <div>
-                <Card style={{ width: '18rem' }}>
+                <Card style={{ width: '18rem', backgroundColor:"#23272A" }}>
                   <Card.Img variant="top" />
                   <Card.Body>
-                    <Card.Title>Note 1</Card.Title>
-                    <Card.Text>
-                      Lorem ipsum blablabla test de la note 1.
-                    </Card.Text>
+                    <Card.Title>{afficheCards()[i-1]}</Card.Title>
                     <Link to="/Notes" className="btn btn-primary">Éditer</Link>
                   </Card.Body>
                 </Card>
             </div>
-
-            <div>
-                <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" />
-                  <Card.Body>
-                    <Card.Title>Note 2</Card.Title>
-                    <Card.Text>
-                      Lorem ipsum blablabla test de la note 2.
-                    </Card.Text>
-                    <Link to="/Notes" className="btn btn-primary">Éditer</Link>
-                  </Card.Body>
-                </Card>
-            </div>
-        </Container>
-    );
+        );
+    }
+    return (<Container className="PagePrincipale">{listeNotes} </Container>);
 }
 
 export default PagePrincipale;
