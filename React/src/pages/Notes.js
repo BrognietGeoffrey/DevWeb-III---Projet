@@ -7,7 +7,7 @@ function Notes(){
         <Container className="Notes">
             <Form.Group controlId="notesTextArea">
                 <Form.Label>Notes</Form.Label>
-                <Form.Control as="textarea" rows={25} />
+                <Form.Control as="textarea" rows={25} style={{backgroundColor: "#23272A"}}/>
             </Form.Group>
             <Button variant="outline-primary" onClick={() => save()}>Save</Button>{' '}
         </Container>
