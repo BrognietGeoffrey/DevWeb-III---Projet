@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col} from 'react-bootstrap';
+import {Link} from "react-router-dom";
 
 function Home() {
     return (
@@ -23,6 +24,15 @@ function Home() {
                         L'application web pour gérer en simplicité vos Notes partagées.
                     </Row>
                 </Col>
+            </div>
+            <div>
+            <Col>
+                <Row>
+                    <div>
+                        <Link to="/page-principale" className="btn btn-primary">Accéder aux notes</Link>
+                    </div>
+                </Row>
+            </Col>
             </div>
         </Container>
     );
