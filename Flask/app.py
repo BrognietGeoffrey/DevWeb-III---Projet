@@ -2,15 +2,39 @@ from flask import Flask, render_template, jsonify, request
 import psycopg2
 
 app = Flask(__name__)
+app.config["DEBUG"] = True
 
 database = psycopg2.connect(
     host="localhost",
-    database="postgres",
-    user="postgres",
-    password="postgres"
+    database="[DATABASE_NAME]",
+    user="[DATABASE_USER]",
+    password="[DATABASE_PASSWORD]"
 )
 
-cur = database.cursor()
+
+#API
+
+@app.route('/api/notes/create', methods='POST')
+def create_note():
+    return 'abc'
+
+
+@app.route('/api/notes/edit', methods='POST')
+def edit_note():
+    return 'abc'
+
+
+@app.route('/api/notes', methods='GET')
+def get_note_id():
+    if 'id' in request.args:
+        id = int(request.args['id'])
+    else:
+        return "Error : no id field provided"
+
+    result = []
+
+
+
 # Page d'acceuil
 @app.route('/')
 def init():
@@ -44,4 +68,4 @@ def share_note(note, person):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
