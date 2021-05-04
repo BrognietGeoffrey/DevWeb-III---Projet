@@ -40,7 +40,7 @@ class Connexion extends Component{
                         <Modal.Title>Connexion</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <form id={"signInForm"} onSubmit={this.handleSubmit.bind(this)}>
+                        <form id={"signInForm"} onSubmit={this.handleSubmit.bind(this)} >
                             <label className={"FormField_Label"} htmlFor={"email"}>
                                 Email address
                             </label>
