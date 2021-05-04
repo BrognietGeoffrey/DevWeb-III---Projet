@@ -31,6 +31,12 @@ class App extends Component {
         />);
   };
 
+  handle_deconnexion = () => {
+    localStorage.clear();
+
+    window.location.href = '/';
+  };
+
   render() {
     return (
       <div className="App">
