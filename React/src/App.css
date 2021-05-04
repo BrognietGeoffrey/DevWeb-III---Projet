@@ -13,7 +13,7 @@
 .App {
   font-family: "Abel", sans-serif;
   font-size: calc(10px + 1vmin);
-  color: var(--Gris-violet);
+  color: var(--Blanc-immaculé);
   display: flex;
   flex-direction: column;
   overflow-x: hidden;

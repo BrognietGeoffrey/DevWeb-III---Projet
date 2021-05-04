@@ -1,5 +1,5 @@
 import React from "react";
-import {DropdownButton, Nav, Navbar, NavDropdown} from "react-bootstrap";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import {Link} from "react-router-dom";
 import logo from "../logo.svg"
 import Connexion from "./Connexion";
@@ -60,9 +60,8 @@ function Header (props){
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav variant="pills" defaultActiveKey="1" className="ml-auto">
                         <Nav.Link eventKey="1" as={Link} to="/">Home</Nav.Link>
-                        <Nav.Link eventKey="2" as={Link} to="Partage">Partage</Nav.Link>
                         <NavDropdown title="Menu" id="collasible-nav-dropdown">
-                            <NavDropdown.Item eventKey="4.1" as={Link} to="page-principale">Cartes</NavDropdown.Item>
+                            <NavDropdown.Item eventKey="4.1" as={Link} to="page-principale">Notes</NavDropdown.Item>
                             <NavDropdown.Item eventKey="4.2" as={Link} to="Groupes">Groupes</NavDropdown.Item>
                             <NavDropdown.Item eventKey="4.3" as={Link} to="Horaire">Horaire</NavDropdown.Item>
                             <NavDropdown.Item eventKey="4.4" as={Link} to="Profil">Profil</NavDropdown.Item>
