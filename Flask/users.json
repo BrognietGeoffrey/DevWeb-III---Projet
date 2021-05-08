@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "uId": "1",
+      "uEmail": "demo@ici.com",
+      "uFirstName": "Demo",
+      "uLastName": "Demo",
+      "uPassword": "ThisIsADemo",
+      "uSeed": "qlskmjdfgqlze"
+    }
+  ]
+}

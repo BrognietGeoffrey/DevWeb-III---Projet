@@ -1,8 +1,9 @@
-import React, { Component }from "react";
+import React, { Component } from "react";
 import './App.css';
 import Header from "./components/Header";
 import Routes from "./Routes.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { fetchApi } from "./utilitaires/api";
 
 class App extends Component {
   constructor(props) {
@@ -29,6 +30,37 @@ class App extends Component {
           closeMe={() => this.setState({show_popUp:null})}
           user_id={this.state.user_id}
         />);
+  };
+
+  on_login = (u_id, u_token, user_email) => {
+    localStorage.setItem('token', u_token);
+    localStorage.setItem('user_id', u_id);
+
+
+    fetchApi(`/users/${u_id}/`)
+        .then((ans) => {
+          localStorage.setItem('first_name', ans.first_name);
+          localStorage.setItem('last_name', ans.last_name);
+
+          this.setState({
+            user_name: ans.first_name,
+            user_family_name: ans.last_name,
+            user_email: user_email,
+            user_id: u_id,
+            logged_in: true,
+          });
+
+        })
+        .catch((err) => {
+          console.log('failed to fetch profile');
+          localStorage.setItem('token', null);
+        });
+  }
+
+  handle_deconnexion = () => {
+    localStorage.clear();
+
+    window.location.href = '/';
   };
 
   render() {

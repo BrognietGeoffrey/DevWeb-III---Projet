@@ -1,9 +1,10 @@
 import React from "react";
-import {DropdownButton, Nav, Navbar, NavDropdown} from "react-bootstrap";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import {Link} from "react-router-dom";
 import logo from "../logo.svg"
 import Connexion from "./Connexion";
 import Inscription from "./Inscription";
+import Deconnexion from "./Deconnexion";
 
 
 function Header (props){
@@ -59,19 +60,15 @@ function Header (props){
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav variant="pills" defaultActiveKey="1" className="ml-auto">
                         <Nav.Link eventKey="1" as={Link} to="/">Home</Nav.Link>
-                        <Nav.Link eventKey="2" as={Link} to="Partage">Partage</Nav.Link>
-                        <DropdownButton title="Menu" menuAlign={{ lg: 'right' }} id="collasible-nav-dropdown">
-                            <NavDropdown.Item eventKey="3.1" as={Link} to="page-principale">Cartes</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item eventKey="3.2" as={Link} to="Groupes">Groupes</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item eventKey="3.3" as={Link} to="Horaire">Horaire</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <Nav.Link eventKey="3.4" as={Link} to="Profil">Profil</Nav.Link>
-                            <Nav.Link id="Deconnexion">
-                                <span onClick={() => props.alert("tentative de déconnexion")}>Déconnexion</span>
-                            </Nav.Link>
-                        </DropdownButton>
+                        <NavDropdown title="Menu" id="collasible-nav-dropdown">
+                            <NavDropdown.Item eventKey="4.1" as={Link} to="page-principale">Notes</NavDropdown.Item>
+                            <NavDropdown.Item eventKey="4.2" as={Link} to="Groupes">Groupes</NavDropdown.Item>
+                            <NavDropdown.Item eventKey="4.3" as={Link} to="Horaire">Horaire</NavDropdown.Item>
+                            <NavDropdown.Item eventKey="4.4" as={Link} to="Profil">Profil</NavDropdown.Item>
+                        </NavDropdown>
+                        <Nav.Link id="Deconnexion">
+                            <span onClick={() => props.display_popUp(Deconnexion)}>Déconnexion</span>
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
