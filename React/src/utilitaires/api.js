@@ -14,10 +14,11 @@ export function fetchApi(endpoint, param){
     param.mode= 'no-cors';
     // alert(JSON.stringify(param));
 
-    return fetch(`${uri}:${port}/api${endpoint}`).then((resp) =>  {
-        if(!resp.ok){
-            throw new Error(resp.status);
-        }
-        return resp.json();
+    return fetch(`${uri}:${port}/api${endpoint}`)
+        .then((resp) =>  {
+            if(!resp.ok){
+                throw new Error(resp.status);
+            }
+            return resp.json();
     });
 }

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 6d476fe19021
-Revises: d073b4de326e
-Create Date: 2021-04-28 02:07:53.336243
+Revision ID: 5a5b73e52bdc
+Revises: 
+Create Date: 2021-05-08 17:54:17.562567
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '6d476fe19021'
-down_revision = 'd073b4de326e'
+revision = '5a5b73e52bdc'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -32,6 +32,27 @@ def upgrade():
     sa.Column('tId', sa.Integer(), nullable=False),
     sa.Column('tName', sa.String(length=50), nullable=True),
     sa.PrimaryKeyConstraint('tId')
+    )
+    op.create_table('users',
+    sa.Column('uId', sa.Integer(), nullable=False),
+    sa.Column('uEmail', sa.String(length=100), nullable=False),
+    sa.Column('uFirstName', sa.String(length=50), nullable=False),
+    sa.Column('uLastname', sa.String(length=50), nullable=False),
+    sa.Column('uPassword', sa.String(length=200), nullable=False),
+    sa.Column('uCreated_on', sa.DateTime(), nullable=True),
+    sa.Column('uLast_login', sa.DateTime(), nullable=True),
+    sa.Column('isAuthenticated', sa.Boolean(), nullable=True),
+    sa.PrimaryKeyConstraint('uId'),
+    sa.UniqueConstraint('uEmail'),
+    sa.UniqueConstraint('uEmail')
+    )
+    op.create_table('notes',
+    sa.Column('nId', sa.Integer(), nullable=False),
+    sa.Column('nTitle', sa.String(length=50), nullable=False),
+    sa.Column('nOwner', sa.Integer(), nullable=True),
+    sa.Column('nDate_created', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['nOwner'], ['users.uId'], ),
+    sa.PrimaryKeyConstraint('nId')
     )
     op.create_table('userprofils',
     sa.Column('uId', sa.Integer(), nullable=False),
@@ -70,6 +91,8 @@ def downgrade():
     op.drop_table('notetags')
     op.drop_table('notecategories')
     op.drop_table('userprofils')
+    op.drop_table('notes')
+    op.drop_table('users')
     op.drop_table('tags')
     op.drop_table('profils')
     op.drop_table('categories')
