@@ -13,12 +13,13 @@
     display: block;
 }
 
-.FormField_Input {
+.FormField_Input,
+.confirmPassword {
     font-family: "Abel", sans-serif;
     padding: 0;
     margin: 0em 0em 0.5em 0em;
     color: black;
-    width: 85%;
+    width: 100%;
     background-color: transparent;
     border: none;
     outline: none;
