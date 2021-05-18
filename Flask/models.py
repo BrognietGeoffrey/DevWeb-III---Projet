@@ -7,31 +7,31 @@ from werkzeug.security import generate_password_hash, check_password_hash
 class User(UserMixin, db.Model):
 	__tablename__ = "users"
 
-	uId = db.Column(db.Integer, primary_key=True)
-	uEmail = db.Column(db.String(100), unique=True, nullable=False)
-	uFirstName = db.Column(db.String(50), nullable=False)
-	uLastname = db.Column(db.String(50), nullable=False)
-	uPassword = db.Column(db.String(200), nullable=False)
-	uCreated_on = db.Column(db.DateTime, index=False, unique=False, nullable=True)
-	uLast_login = db.Column(db.DateTime, index=False, unique=False, nullable=True)
-	isAuthenticated = db.Column(db.Boolean, default=False)
+	uid = db.Column(db.Integer, primary_key=True)
+	uemail = db.Column(db.String(100), unique=True, nullable=False)
+	ufirstname = db.Column(db.String(50), nullable=False)
+	ulastname = db.Column(db.String(50), nullable=False)
+	upassword = db.Column(db.String(200), nullable=False)
+	ucreated_on = db.Column(db.DateTime, index=False, unique=False, nullable=True)
+	ulast_login = db.Column(db.DateTime, index=False, unique=False, nullable=True)
+	isauthenticated = db.Column(db.Boolean, default=False)
 
 	def __init__(self, email, firstname, lastname, password):
-		self.uEmail = email
-		self.uFirstName = firstname
-		self.uLastname = lastname
-		self.uPassword = password
+		self.uemail = email
+		self.ufirstname = firstname
+		self.ulastname = lastname
+		self.upassword = password
 
 	def __repr__(self):
-		return '<User {}>'.format(self.uEmail)
+		return '<User {}>'.format(self.uemail)
 
 	def set_password(self, password):
 		"""Create hashed password."""
-		self.uPassword = generate_password_hash(password, method='sha256')
+		self.upassword = generate_password_hash(password, method='sha256')
 
 	def check_password(self, password):
 		"""Check hashed password."""
-		return check_password_hash(self.uPassword, password)
+		return check_password_hash(self.upassword, password)
 
 	def is_active(self):
 		"""True, as all users are active."""
@@ -52,81 +52,81 @@ class User(UserMixin, db.Model):
 
 class Note(db.Model):
 	__tablename__ = 'notes'
-	nId = db.Column(db.Integer, primary_key=True)
-	nTitle = db.Column(db.String(50), nullable=False)
-	nOwner = db.Column(db.Integer, db.ForeignKey('users.uId'))
-	nDate_created = db.Column(db.DateTime, default=datetime.now)
+	nid = db.Column(db.Integer, primary_key=True)
+	ntitle = db.Column(db.String(50), nullable=False)
+	nowner = db.Column(db.Integer, db.ForeignKey('users.uid'))
+	ndate_created = db.Column(db.DateTime, default=datetime.now)
 
 	def __init__(self, title, readers):
-		self.nTitle = title
-		self.nReaders = readers
+		self.ntitle = title
+		self.nreaders = readers
 
 	def __repr__(self):
-		return '<id {}>'.format(self.nId)
+		return '<id {}>'.format(self.nid)
 
 
 class Profil(db.Model):
 	__tablename__ = 'profils'
 
-	pId = db.Column(db.Integer, primary_key=True)
-	pName = db.Column(db.String(20))
+	pid = db.Column(db.Integer, primary_key=True)
+	pname = db.Column(db.String(20))
 
 	def __init__(self, name):
-		self.pName = name
+		self.pname = name
 
 	def __repr__(self):
-		return '<id {}>'.format(self.pId)
+		return '<id {}>'.format(self.pid)
 
 
 class Tag(db.Model):
 	__tablename__ = 'tags'
 
-	tId = db.Column(db.Integer, primary_key=True)
-	tName = db.Column(db.String(50))
+	tid = db.Column(db.Integer, primary_key=True)
+	tname = db.Column(db.String(50))
 
 	def __init__(self, name):
-		self.tName = name
+		self.tname = name
 
 	def __repr__(self):
-		return '<id {}>'.format(self.tId)
+		return '<id {}>'.format(self.tid)
 
 
 class Categorie(db.Model):
 	__tablename__ = 'categories'
 
-	cId = db.Column(db.Integer, primary_key=True)
-	cName = db.Column(db.String(50))
+	cid = db.Column(db.Integer, primary_key=True)
+	cname = db.Column(db.String(50))
 
 	def __init__(self, name):
-		self.cName = name
+		self.cname = name
 
 	def __repr__(self):
-		return '<id {}>'.format(self.cId)
+		return '<id {}>'.format(self.cid)
 
 
 class UserProfil(db.Model):
 	__tablename__ = 'userprofils'
 
-	uId = db.Column(db.Integer, db.ForeignKey('users.uId'), primary_key=True)
-	pId = db.Column(db.Integer, db.ForeignKey('profils.pId'), primary_key=True)
+	uid = db.Column(db.Integer, db.ForeignKey('users.uid'), primary_key=True)
+	pid = db.Column(db.Integer, db.ForeignKey('profils.pid'), primary_key=True)
 
 
 class NoteUser(db.Model):
 	__tablename__ = 'noteusers'
 
-	nId = db.Column(db.Integer, db.ForeignKey('notes.nId'), primary_key=True)
-	uId = db.Column(db.Integer, db.ForeignKey('users.uId'), primary_key=True)
+	nid = db.Column(db.Integer, db.ForeignKey('notes.nid'), primary_key=True)
+	uid = db.Column(db.Integer, db.ForeignKey('users.uid'), primary_key=True)
 
 
 class NoteTag(db.Model):
 	__tablename__ = 'notetags'
 
-	nId = db.Column(db.Integer, db.ForeignKey('notes.nId'), primary_key=True)
-	tId = db.Column(db.Integer, db.ForeignKey('tags.tId'), primary_key=True)
+	nid = db.Column(db.Integer, db.ForeignKey('notes.nid'), primary_key=True)
+	tid = db.Column(db.Integer, db.ForeignKey('tags.tid'), primary_key=True)
 
 
 class NoteCategorie(db.Model):
 	__tablename__ = 'notecategories'
 
-	nId = db.Column(db.Integer, db.ForeignKey('notes.nId'), primary_key=True)
-	cId = db.Column(db.Integer, db.ForeignKey('categories.cId'), primary_key=True)
+	nid = db.Column(db.Integer, db.ForeignKey('notes.nid'), primary_key=True)
+	cid = db.Column(db.Integer, db.ForeignKey('categories.cid'), primary_key=True)
